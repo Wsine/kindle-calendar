@@ -21,7 +21,8 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         # check input request
-        ctype, _ = cgi.parse_header(self.headers.getheader('content-type'))
+        #  ctype, _ = cgi.parse_header(self.headers.getheader('content-type'))
+        ctype, _ = cgi.parse_header(self.headers.get('content-type'))
         if ctype != 'application/json':
             return self._refuse_request()
 
