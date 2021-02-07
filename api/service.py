@@ -34,7 +34,7 @@ class Handler(BaseHTTPRequestHandler):
             pdf.set_year(int(params['year'][0]))
 
         # read the message and convert it into a python dictionary
-        length = int(self.headers.getheader('content-length'))
+        length = int(self.headers.get('content-length'))
         corpus = json.loads(self.rfile.read(length))
         pdf.set_corpus(corpus)
 

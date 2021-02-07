@@ -8,6 +8,7 @@ function generate_calendar() {
     var reader = new FileReader()
     reader.readAsText(file, 'UTF-8')
     reader.onload = function (e) {
+        e.preventDefault()
         var corpus = {}
         var content = e.target.result
         content.split('\n').slice(1).forEach(line => {
@@ -24,8 +25,26 @@ function generate_calendar() {
         var year = select.value
 
         var xhr = new XMLHttpRequest()
+        xhr.onload = function(e) {
+            if (this.status == 200) {
+                var blob = new Blob([this.response], {type: 'application/pdf'})
+                var dispo = e.currentTarget.getResponseHeader('Content-Disposition')
+                var fileName = dispo.match(/filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/)[1]
+                console.log(fileName)
+                var a = document.createElement('a')
+                a.style = 'display: none'
+                document.body.appendChild(a)
+                var url = window.URL.createObjectURL(blob);
+                a.href = url
+                a.download = fileName
+                a.click()
+                window.URL.revokeObjectURL(url)
+            }
+        }
+
         xhr.open('POST', '/api/service/?year=' + year.toString(), true)
         xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8')
+        xhr.responseType = 'blob'
         xhr.send(JSON.stringify(corpus))
     }
     reader.onerror = function (e) {
