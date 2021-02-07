@@ -2,7 +2,7 @@ import json
 import cgi
 from urllib.parse import parse_qs
 from http.server import HTTPServer, BaseHTTPRequestHandler
-from inspirepdf import InspirePDF
+from core.inspirepdf import InspirePDF
 
 filename = 'kindle_canlendar.pdf'
 
