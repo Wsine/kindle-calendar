@@ -24,8 +24,7 @@ function generate_calendar() {
         var year = select.value
 
         var xhr = new XMLHttpRequest()
-        var url = window.location.protocol + '//' + window.location.host + ':8000/?year=' + year.toString()
-        xhr.open('POST', url, true)
+        xhr.open('POST', '/api/service/?year=' + year.toString(), true)
         xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8')
         xhr.send(JSON.stringify(corpus))
     }
