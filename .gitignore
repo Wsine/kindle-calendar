@@ -2,3 +2,6 @@
 *.pkl
 backend/*.pdf
 backend/*.csv
+node_modules
+.parcel-cache
+dist

@@ -1,0 +1,36 @@
+{
+  "name": "kindle-calendar",
+  "version": "1.0.0",
+  "description": "该小项目是面向2020年封闭的Covid-19疫情下的如何获取积极的生活能量而创立。同时也是拯救吃灰的Kindle设备的一个积极思考。",
+  "source": "src/index.html",
+  "scripts": {
+    "dev": "parcel",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wsine/kindle-calendar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wsine/kindle-calendar/issues"
+  },
+  "homepage": "https://github.com/Wsine/kindle-calendar#readme",
+  "dependencies": {
+    "@chakra-ui/react": "^1.8.3",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "blob-stream": "^0.1.3",
+    "framer-motion": "^5.6.0",
+    "pdfkit": "^0.13.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "parcel": "^2.2.1"
+  }
+}
