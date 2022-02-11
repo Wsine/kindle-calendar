@@ -5,9 +5,7 @@
   "source": "src/index.html",
   "scripts": {
     "dev": "parcel",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "build": "parcel build"
   },
   "repository": {
     "type": "git",
