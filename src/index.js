@@ -5,7 +5,7 @@ import { ChakraProvider, Container, Heading, Checkbox, Wrap, WrapItem, Button, F
 import hitokoto from './hitokoto.js'
 const PDFDocument = require('pdfkit').default
 const blobStream = require('blob-stream')
-const simheiFont = fs.readFileSync(path.join(__dirname, '../fonts/simhei.ttf'))
+const simheiFont = fs.readFileSync(path.join(__dirname, '../assets/fonts/simhei.ttf'))
 
 
 async function generate_calendar() {
@@ -22,6 +22,9 @@ async function generate_calendar() {
   const daysOfMonth = [
     31, year % 4 == 0 ? 29 : 28, 31, 30,
     31, 30, 31, 31, 30, 31, 30, 31]
+
+  doc.info.Title = 'Kindle Calendar ' + year
+  doc.info.Author = 'Wsine/kindle-calendar'
 
   let counter = 0
   for (let month = 1; month <= 12; month++) {
@@ -104,7 +107,7 @@ export function App() {
         <Wrap spacing='10px' mb={5}>
           {categories.map((item, index) => {
             return (
-              <WrapItem>
+              <WrapItem key={'wi' + index}>
                 <Checkbox defaultChecked name={'cb' + index}
                     value={String.fromCharCode(97 + index)}>
                   {item}
@@ -130,3 +133,4 @@ export function App() {
 
 const app = document.getElementById('app');
 ReactDOM.render(<App />, app);
+
